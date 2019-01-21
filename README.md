@@ -3,10 +3,12 @@ More fully featured version of WebAppSkeleton
 
 (Fork of WebAppSkeleton)
 
-Added:
+*Added:*
 * Postgres
 * Sequelize
 * Websockets
+
+=======================================================
 
 # WebAppSkeleton
 Skeleton for creating a Single Page App (client & server). This project is meant to be a lean and highly customizable starting point for rapid prototyping.

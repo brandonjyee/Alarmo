@@ -1,5 +1,5 @@
 {
-  "name": "webappskeleton",
+  "name": "webappskeleton-full",
   "version": "1.0.0",
   "description": "Skeleton for a web app",
   "engines": {
@@ -12,6 +12,7 @@
     "start-dev": "NODE_ENV='development' npm run build-client & NODE_ENV='development' npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "jest",
+    "seed": "node script/seed.js",
     "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "sequelize": "^4.42.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
