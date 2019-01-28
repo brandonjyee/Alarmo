@@ -4,9 +4,11 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 import sample from './sample'
+import alarms from './alarms'
 
 const reducer = combineReducers({
   sample,
+  alarms
   // Other reducers here
 })
 const middleware = composeWithDevTools(

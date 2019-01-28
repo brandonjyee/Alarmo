@@ -2,38 +2,45 @@ import React, { Fragment } from 'react';
 // import {connect} from 'react-redux'
 import axios from 'axios';
 
+import { Segment, Icon, Button } from 'semantic-ui-react';
+
 class AlarmCard extends React.Component {
-  state = {
-    alarms: [{ title: 'defAlarm', msg: 'defMsg' }],
-  };
+  // state = {
+  //   // alarms: [{ title: 'defAlarm', msg: 'defMsg' }],
+  // };
 
   constructor(props) {
     super(props);
   }
 
-  async componentDidMount() {
+  onClick = async evt => {
     try {
-      const { data: alarms } = await axios.get('/api/alarms');
-      console.log('fetched alarms. Updating state');
-      this.setState({ alarms });
+      const { alarm } = this.props;
+      console.log(evt.target.name, 'clicked!');
+      const voteDir = evt.target.name === 'upvote' ? 'up' : 'down';
+      await axios.post(`/api/alarms/${alarm.id}/vote?voteDir=${voteDir}`, {});
+      console.log('sent vote post');
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   render() {
-    const { alarms } = this.state;
+    const { alarm } = this.props;
     return (
-      <Fragment>
-        {alarms.map(alarm => {
-          return (
-            <div key={alarm.title}>
-              <h2>{alarm.title}</h2>
-              msg: {alarm.msg}
-            </div>
-          );
-        })}
-      </Fragment>
+      <Segment>
+        <h2>{alarm.title}</h2>
+        id: {alarm.id}
+        msg: {alarm.msg}
+        <br />
+        <Button icon name="upvote" onClick={this.onClick}>
+          <Icon name="angle up" />
+        </Button>
+        upvotes: {alarm.upvotes}
+        <Button icon name="downvote" onClick={this.onClick}>
+          <Icon name="angle down" onClick={this.onClick} />
+        </Button>
+      </Segment>
     );
   }
 }

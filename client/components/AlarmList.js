@@ -1,8 +1,17 @@
 import React, { Fragment } from 'react';
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 import axios from 'axios';
+import { Container, Header, Segment } from 'semantic-ui-react'
+
+import {fetchAlarms} from '../store/alarms'
 
 import AlarmCard from './AlarmCard'
+
+const styles = {
+  segment: {
+    margin: '10px'
+  }
+}
 
 class AlarmList extends React.Component {
   state = {
@@ -15,9 +24,11 @@ class AlarmList extends React.Component {
 
   async componentDidMount() {
     try {
+
       const { data: alarms } = await axios.get('/api/alarms');
-      console.log('fetched alarms. Updating state');
+      console.log('fetched alarms. Updating state.', alarms);
       this.setState({ alarms });
+      // this.props.fetchAlarms()
     } catch (err) {
       console.error(err);
     }
@@ -26,22 +37,22 @@ class AlarmList extends React.Component {
   render() {
     const { alarms } = this.state;
     return (
-      <Fragment>
+      <Segment raised style={styles.segment}>
+        <Header as='h2'>Alarms</Header>
         {alarms.map(alarm => {
           return (
-            <div key={alarm.title}>
-              <h2>{alarm.title}</h2>
-              msg: {alarm.msg}
-            </div>
+            <AlarmCard key={alarm.id} alarm={alarm} />
           );
         })}
-      </Fragment>
+      </Segment>
     );
   }
 }
 
-// const mapStateToProps = () => {
+const mapStateToProps = ({alarms}) => ( alarms )
 
-// }
+const mapDispatchToProps = (dispatch) => ({
+  fetchAlarms
+})
 
-export default AlarmList;
+export default connect(mapStateToProps, mapDispatchToProps)(AlarmList);

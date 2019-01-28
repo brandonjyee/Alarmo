@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 
+import { Input, Button } from 'semantic-ui-react'
+
 class CreateAlarm extends React.Component {
   state = {
     // form name: value
@@ -31,19 +33,19 @@ class CreateAlarm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input
+        <Input
           name="title"
           type="text"
           onChange={this.handleChange}
           placeholder="title"
         />
-        <input
+        <Input
           name="msg"
           type="text"
           onChange={this.handleChange}
           placeholder="message"
         />
-        <button type="submit">Create Alarm</button>
+        <Button type="submit">Create Alarm</Button>
       </form>
     );
   }

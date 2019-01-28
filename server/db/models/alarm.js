@@ -18,6 +18,10 @@ const Alarm = db.define('alarm', {
       notEmpty: true,
       isUppercase: true
     }
+  },
+  upvotes: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   }
 })
 
