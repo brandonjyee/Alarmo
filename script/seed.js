@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {Thing} = require('../server/db/models')
+const {Thing, Alarm} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -14,6 +14,13 @@ async function seed() {
 
   console.log(`seeded ${things.length} things`)
   console.log(`seeded successfully`)
+
+  // Seed the Alarms
+  const alarms = await Promise.all([
+    Alarm.create({title: 'Alarm1', msg: 'MY ALARM1 !!'}),
+    Alarm.create({title: 'Alarm2', msg: 'MY ALARM2 !!'}),
+    Alarm.create({title: 'Alarm3', msg: 'MY ALARM3 !!'}),
+  ])
 }
 
 // We've separated the `seed` function from the `runSeed` function.

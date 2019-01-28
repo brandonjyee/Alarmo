@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
-import ShowThings from './ShowThings'
+import CreateAlarm from './CreateAlarm'
+import AlarmList from './AlarmList'
 
 export default function Home() {
   return (
     <div>
-      <ShowThings />
+      <CreateAlarm />
+      {/* AlarmList (w/ newest alarms first) */}
+      <AlarmList />
+      {/* Can upvote alarms */}
     </div>
   );
 }

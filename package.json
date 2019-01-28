@@ -1,7 +1,7 @@
 {
-  "name": "webappskeleton-full",
+  "name": "alarmo",
   "version": "1.0.0",
-  "description": "Skeleton for a web app",
+  "description": "create alarms",
   "engines": {
     "node": ">= 10.0.0"
   },
@@ -28,6 +28,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.84.0",
     "sequelize": "^4.42.0",
     "socket.io": "^2.2.0"
   },
