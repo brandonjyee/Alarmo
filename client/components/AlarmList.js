@@ -15,7 +15,7 @@ const styles = {
 
 class AlarmList extends React.Component {
   state = {
-    alarms: [{ title: 'defAlarm', msg: 'defMsg' }],
+    alarms: [{ id: -1, title: 'defAlarm', msg: 'defMsg' }],
   };
 
   constructor(props) {
